@@ -99,14 +99,17 @@ Kisi-kisi: reverse string, handling character/number/special character.
 
 ---
 
-## Live Test — Interview Kerja
+## Sesi 4 — Reverse Letters Only (Terapan Mandiri)
 
-**Hasil:** Soal yang keluar persis pattern Reverse Letters Only (huruf dibalik,
-simbol tetap di posisi). Selesai ~20 menit untuk 2 test case. Sempat ragu
-mau pakai `.reversed()` biasa vs manual — akhirnya pilih manual dengan
-two-pointer + `isLetter()` check karena soal punya syarat khusus (simbol
-harus diam), yang gak bisa dipenuhi kalau pakai reverse biasa (baik versi
-bawaan maupun manual tanpa pengecekan).
+**Yang dipelajari:**
+- Nerapin pattern Two Pointer + character check secara mandiri tanpa tuntunan,
+  selesai ~20 menit untuk 2 test case
+
+**Insight penting:**
+- Sempat ragu pakai `.reversed()` (bawaan) vs manual — akhirnya pilih pendekatan
+  manual dengan two-pointer + `isLetter()` check, karena soal punya syarat
+  khusus (simbol harus diam di posisi asal) yang gak bisa dipenuhi kalau pakai
+  reverse biasa (baik versi bawaan bahasa maupun manual tanpa pengecekan)
 
 ---
 
