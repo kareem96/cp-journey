@@ -7,7 +7,7 @@ Baca file ini dulu sebelum bantu apapun di repo ini.
 ## Tujuan Repo Ini
 
 1. Bangun habit latihan CP konsisten ~1 jam/hari (jangka panjang, bukan cuma buat 1 test doang)
-2. Awalnya dipicu oleh test kerja di perusahaan Meratus (kisi-kisi basic: reverse string,
+2. Awalnya dipicu oleh kebutuhan persiapan test kerja (kisi-kisi basic: reverse string,
    character handling, number handling, special character) — tapi tujuannya udah
    berkembang jadi pembentukan kebiasaan CP yang lebih luas
 3. Kotlin adalah bahasa utama buat latihan CP (karena itu stack utama Kareem)
@@ -51,7 +51,7 @@ Ini bagian paling krusial — ikuti gaya ini secara konsisten:
   belum ada di compiler versi lama — kalau ketemu error `unresolved reference`,
   coba versi lama-nya (`toLowerCase()`, `.toInt()` buat ambil kode ASCII karakter).
 
-## Kisi-Kisi Awal (Test Meratus) — Konteks Historis
+## Kisi-Kisi Awal (Test Kerja) — Konteks Historis
 
 4 kategori basic yang jadi starting point:
 1. **Reversing string** — balik urutan karakter
@@ -61,7 +61,7 @@ Ini bagian paling krusial — ikuti gaya ini secara konsisten:
 
 Kareem sudah lulus tahap test live coding untuk soal **Reverse Letters Only**
 (two-pointer, huruf dibalik tapi simbol tetap di posisi asal) — selesai dalam
-~20 menit untuk 2 test case. Hasil masih ditunggu per tanggal dokumen ini dibuat.
+~20 menit untuk 2 test case.
 
 ## "Gak Tau CARA" vs "Gak Tau KONSEP" — Kapan Boleh Langsung Jelasin
 

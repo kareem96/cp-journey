@@ -99,7 +99,7 @@ Kisi-kisi: reverse string, handling character/number/special character.
 
 ---
 
-## Live Test — Meratus
+## Live Test — Interview Kerja
 
 **Hasil:** Soal yang keluar persis pattern Reverse Letters Only (huruf dibalik,
 simbol tetap di posisi). Selesai ~20 menit untuk 2 test case. Sempat ragu
@@ -107,8 +107,6 @@ mau pakai `.reversed()` biasa vs manual — akhirnya pilih manual dengan
 two-pointer + `isLetter()` check karena soal punya syarat khusus (simbol
 harus diam), yang gak bisa dipenuhi kalau pakai reverse biasa (baik versi
 bawaan maupun manual tanpa pengecekan).
-
-**Status:** Menunggu hasil.
 
 ---
 

@@ -1,7 +1,8 @@
 # CP Journey
 
-Repo latihan Competitive Programming — Kotlin. Dibangun buat persiapan test kerja
-di Meratus, lanjut jadi habit belajar CP jangka panjang.
+Repo latihan Competitive Programming — Kotlin. Dibangun untuk membentuk habit
+belajar CP jangka panjang, dari fondasi dasar (string/number manipulation,
+character handling) menuju pattern yang lebih kompleks.
 
 ## Struktur
 
