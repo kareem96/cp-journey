@@ -2,7 +2,7 @@
  * Reverse Letters Only — Two Pointer + Skip
  *
  * Balik urutan HURUF saja dalam sebuah string, simbol/angka tetap di posisi asal.
- * Ini soal yang keluar di live coding test Meratus.
+ * Ini soal yang keluar di live coding test kerja.
  *
  * Contoh: "ab-cd" -> "dc-ba" (huruf a,b,c,d dibalik, "-" tetap di posisi ke-3)
  * Contoh: "ad()j!" -> "jd()a!" (cuma 'a' dan 'j' yang huruf & bisa ditukar,

@@ -24,7 +24,7 @@ class ReverseString {
 
 fun main() {
     val solver = ReverseString()
-    val testCases = listOf("Meratus", "Kotlin", "a", "", "ab")
+    val testCases = listOf("Algorithm", "Kotlin", "a", "", "ab")
     for (t in testCases) {
         println("\"$t\" -> \"${solver.reverseManual(t)}\"")
     }

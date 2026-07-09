@@ -8,7 +8,7 @@ selesai sesi belajar — bukan cuma "hari ini ngerjain apa", tapi juga
 
 ## Sesi 1 — Kickoff: Reverse String & Reverse Integer
 
-**Konteks:** Persiapan test basic dari Meratus (1 minggu), format compiler online.
+**Konteks:** Persiapan test kerja basic (1 minggu), format compiler online.
 Kisi-kisi: reverse string, handling character/number/special character.
 
 **Yang dipelajari:**
@@ -110,6 +110,44 @@ Kisi-kisi: reverse string, handling character/number/special character.
   manual dengan two-pointer + `isLetter()` check, karena soal punya syarat
   khusus (simbol harus diam di posisi asal) yang gak bisa dipenuhi kalau pakai
   reverse biasa (baik versi bawaan bahasa maupun manual tanpa pengecekan)
+
+---
+
+## Sesi 5 — Two Pointer Variasi 2: Valid Palindrome (Compare, bukan Swap)
+
+**Yang dipelajari:**
+- Variasi Two Pointer dengan signature beda: return `Boolean` (bukan `String`),
+  dan operasi di dalam loop-nya `compare` (bukan `swap`)
+- Percobaan pertama gak pakai Two Pointer sama sekali — bikin 2 string
+  (`textOri` pakai `+=`, `reverse` pakai prepend `= char + reverse`), baru
+  dikonversi ke Two Pointer setelah dibahas
+
+**Insight penting:**
+- Swap itu cuma perlu kalau tujuannya REARRANGE/susun ulang data (kayak Reverse
+  Letters Only). Kalau tujuannya cuma jawab Boolean (ada gak perlu ubah
+  susunan), swap gak ngapa-ngapain — yang dibutuhin cuma compare tiap pasangan
+  `(left, right)`, kalau beda langsung `return false` (early exit)
+- Kalau loop Two Pointer selesai NORMAL (gak pernah ke-trigger `return false`),
+  itu SENDIRI udah jadi bukti semua pasangan cocok -> tinggal `return true`,
+  gak perlu bukti tambahan (bikin/reverse string lagi di akhir itu langkah sia-sia)
+- Penjelasan/contoh di soal (misal "kalau difilter jadi X, X itu palindrome")
+  itu buat bantu paham KENAPA jawabannya true/false — bukan instruksi bahwa
+  kode WAJIB literally bikin string X itu. Ada banyak teknik buat sampe ke
+  jawaban yang sama
+- `textOri += char` (append, urutan asli ke-preserve) vs `reverse = char +
+  reverse` (prepend, urutan kebalik) — beda krusial ini yang bikin percobaan
+  pertama ketauan bug-nya
+
+**Kegagalan & pelajaran:**
+- Percobaan pertama: `textOri` awalnya JUGA pakai prepend (sama kayak
+  `reverse`) -> keduanya jadi identik -> hasil SELALU `true` apapun input-nya
+  (bug: gak pernah beneran ngecek apa-apa). Ketauan lewat trace manual pakai
+  input `"ab"`
+- Konversi ke Two Pointer sempat salah copy logic SWAP dari Reverse Letters
+  Only, padahal soal ini butuhnya COMPARE. Diluruskan: swap = rearrange,
+  compare = cek kondisi, dua tujuan yang beda
+- Verifikasi pakai `kotlinc` beneran (bukan cuma trace) untuk 4 test case
+  (`"ab"`, `"A man, a plan, a canal: Panama"`, `"race a car"`, `" "`) — semua lolos
 
 ---
 
