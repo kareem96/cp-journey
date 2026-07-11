@@ -151,6 +151,46 @@ Kisi-kisi: reverse string, handling character/number/special character.
 
 ---
 
+## Sesi 6 — Two Pointer Variasi 3: Count Different Pairs After Reverse (Int)
+
+**Konteks:** Variasi ke-3 dari dimensi "return type berbeda" yang disebut di
+`CLAUDE.md` — progresi String (reverse) -> Boolean (palindrome check) -> Int
+(hitung berapa index yang beda setelah reverse).
+
+**Yang dipelajari:**
+- Two Pointer dengan operasi COUNT (bukan swap, bukan compare-early-exit) —
+  loop jalan terus sampai selesai sambil numpuk hitungan, gak early exit pas
+  ketemu beda
+
+**Insight penting:**
+- Satu kali pertemuan pointer (`left`, `right`) itu mewakili **2 POSISI INDEX
+  sekaligus** — posisi `left` DAN posisi `right` — karena `reverse[left] ==
+  original[right]` dan `reverse[right] == original[left]`. Makanya
+  `count += 2` per mismatch itu BUKAN hack buat maksain angka, tapi
+  representasi akurat dari "berapa banyak index yang beda dari reverse-nya"
+- Operator `!=` (dan `==`) itu **simetris**: `A != B` selalu punya nilai sama
+  dengan `B != A`. Ngecek kondisi yang sama dari 2 arah (`char[left] !=
+  char[right]` DAN `char[right] != char[left]`) gak pernah ngasih informasi
+  baru — kalau ketemu pola kayak gini, itu tanda ada kondisi tautological
+  (selalu true) yang bisa disederhanain
+- Kode yang identik di kedua cabang `if`/`else` (di sini: `left++; right--`)
+  bisa ditarik keluar, dijalanin sekali di akhir loop tanpa perlu duplikat
+
+**Kegagalan & pelajaran:**
+- Percobaan pertama nge-carry filter `!isLetter()` dari soal sebelumnya
+  (Reverse Letters Only / Valid Palindrome) padahal soal baru ini gak pernah
+  minta filter itu — assumption lama kebawa tanpa dicek ulang apa masih
+  relevan ke soal baru
+- Percobaan pertama pakai `else return 0` pas ketemu pasangan yang SAMA —
+  ini bug fatal karena motong loop di tengah jalan (harusnya cuma skip/gerak
+  pointer, bukan return), ketauan lewat trace manual input `"abxa"`
+  (mismatch ada di pasangan tengah, tapi pasangan luar sempat "sama" duluan)
+- Sempat bingung cukup lama kenapa `count += 2` itu benar, bukan cheat —
+  butuh beberapa kali penjelasan pakai trace index-mapping (`reverse[i] ==
+  original[n-1-i]`) sebelum beneran klik
+
+---
+
 <!-- Template buat entry baru:
 
 ## Sesi N — [Judul singkat]
