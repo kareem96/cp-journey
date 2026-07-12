@@ -259,6 +259,25 @@ dipake buat LeetCode #680, Kareem ngira itu manggil function `.drop()`
 Kotlin (yang emang beneran ada), padahal maksudnya cuma geser index — gak
 diklarifikasi dari awal, baru dijelasin setelah ditanya berulang kali.
 
+**Istilah/properti kunci di soal WAJIB dikasih definisi konkret + contoh
+visual index dari awal, bukan cuma disebut namanya doang.** Kalau soal
+ngandelin istilah teknis (misal "non-decreasing", "palindrome", "subarray"
+vs "subsequence") — jangan cuma nyebut nama/definisi 1 baris terus lanjut
+ke Example. Kasih contoh visual (array/string + index) yang nunjukkin
+PERSIS arah/scope pengecekannya (misal: dibandingin ke elemen SETELAHNYA
+doang, dari kiri ke kanan — bukan bolak-balik).
+
+**JANGAN campur "definisi soal" sama "strategi penyelesaian" dalam 1
+penjelasan.** Kalau butuh nyebut sesuatu yang sebenernya bagian dari CARA
+NYELESAIIN (misal "pas mau benerin, perlu liat elemen sebelum & sesudah"),
+itu HARUS dipisah jelas dari definisi properti/istilahnya sendiri — jangan
+digabung di 1 kalimat/paragraf yang sama, karena bikin Kareem ngira itu
+bagian dari definisi soal, padahal itu bagian dari solusi. Kejadian nyata:
+soal LeetCode #665 (Non-decreasing Array), penjelasan Example 3 nyebut
+"cek elemen sebelum DAN sesudah" — itu strategi FIXING, bukan definisi
+"non-decreasing" (yang sebenernya cuma 1 arah, kiri ke kanan) — tercampur
+jadi bikin Kareem ngira "non-decreasing" itu dicek 2 arah.
+
 ## Preferensi Teknis
 
 - Bahasa utama: **Kotlin**
