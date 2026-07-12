@@ -191,6 +191,43 @@ Kisi-kisi: reverse string, handling character/number/special character.
 
 ---
 
+## Sesi 7 — Two Pointer Variasi 4: Valid Palindrome II (Branching)
+
+**Konteks:** LeetCode #680. Variasi baru dari dimensi teknik (bukan return
+type) — pas ketemu mismatch, gak langsung nyerah (early exit false), tapi
+harus nyoba 2 kemungkinan dulu (skip kiri / skip kanan) sebelum mutusin.
+
+**Yang dipelajari:**
+- Teknik "branching on mismatch": ketemu 2 karakter beda -> coba anggap
+  salah satu (kiri ATAU kanan) gak dihitung -> cek sisanya masih palindrome
+  atau enggak -> kalau salah satu aja iya, jawabannya true
+- Konsep "range": function yang nerima `left`/`right` sebagai PARAMETER
+  (bukan hardcode `0`/`size-1`) biar bisa ngecek SEBAGIAN string, bukan
+  cuma seluruhnya
+- 2 pendekatan dicoba & dibandingin: pake helper function
+  `isPalindromeInRange` (gak ada duplikasi kode) vs inline tanpa function
+  tambahan (logic compare keulang 2x, tapi valid & lebih gampang dipahami
+  di awal)
+- Soal LeetCode/HackerRank cuma nuntut 1 function resmi jadi hasil akhir,
+  TAPI bebas bikin helper function/variable tambahan sendiri buat bantu
+
+**Kegagalan & pelajaran:**
+- Percobaan pertama cuma niru `ValidPalindrome` lama (compare, langsung
+  `return false` pas mismatch) — gagal di test case `"abca"` (harusnya
+  `true`), karena belum ada logic "coba skip 1 karakter" sama sekali
+- Konsep "range" (window `[left, right]` yang lagi aktif dibandingin,
+  BUKAN seluruh string) sempat butuh dijelasin berkali-kali pake trace
+  visual index sebelum klik
+- Proses sesi ini banyak gesekan komunikasi — istilah "dibuang" yang
+  dipake buat jelasin konsep bikin dikira manggil function `.drop()`
+  beneran, function tambahan (`isPalindromeInRange`) muncul di tengah
+  tanpa disebut dari awal soal dikasih. Semua ini udah di-capture jadi
+  rule permanen baru di `CLAUDE.md` (format soal, catatan implementasi,
+  istilah ambigu, boleh bikin function tambahan) biar sesi berikutnya
+  lebih jelas dari awal
+
+---
+
 <!-- Template buat entry baru:
 
 ## Sesi N — [Judul singkat]
