@@ -13,6 +13,7 @@ progress-log.md          <- catatan progress & insight tiap sesi belajar
 string-manipulation/      <- reverse string, palindrome, two-pointer
 number-manipulation/      <- reverse integer, sum of digits
 character-classification/ <- klasifikasi karakter, special character handling
+array-manipulation/       <- single-pass array check, modifikasi in-place
 ```
 
 ## Cara pakai

@@ -6,78 +6,6 @@ selesai sesi belajar — bukan cuma "hari ini ngerjain apa", tapi juga
 
 ---
 
-## SEDANG DIKERJAKAN (belum selesai) — LeetCode #665 Non-decreasing Array
-
-Sesi berikutnya LANGSUNG lanjut soal ini, gak usah bikin soal baru. Kareem
-belum sempat nyoba/nyelesain soal ini.
-
-**Soal lengkap:**
-
-Diberikan array integer `nums`. Tentukan apakah array ini bisa jadi
-**non-decreasing** dengan mengubah paling banyak 1 elemen (ubah nilainya
-jadi apa aja, bukan hapus).
-
-**Definisi "non-decreasing":** dibaca 1 arah, dari index kecil ke index
-besar. Tiap elemen dibandingin sama elemen SETELAHNYA doang
-(`nums[i] <= nums[i+1]`, gak boleh turun). Contoh:
-```
-index:  0  1  2  3
-value:  1  3  2  5
-```
-Cek berurutan: `nums[0]<=nums[1]`? (`1<=3` ✓) → `nums[1]<=nums[2]`?
-(`3<=2` ✗ pelanggaran) → `nums[2]<=nums[3]`? (`2<=5` ✓). Array ini BUKAN
-non-decreasing karena ada 1 pelanggaran (`3>2`).
-
-**Constraints:**
-- `1 <= nums.length <= 10^4` — array minimal 1 elemen, maksimal 10.000
-  elemen
-- `-10^5 <= nums[i] <= 10^5` — tiap elemen nilainya antara -100.000 sampai
-  100.000
-
-**Example 1:**
-Input: `nums = [4, 2, 3]`
-Output: `true`
-Explanation: Ubah `4` jadi `1` (atau nilai berapapun `<= 2`) →
-`[1, 2, 3]`, non-decreasing.
-
-**Example 2:**
-Input: `nums = [4, 2, 1]`
-Output: `false`
-Explanation: Ada 2 pelanggaran (`4>2` dan `2>1`), gak bisa dibenerin
-dengan ubah cuma 1 elemen.
-
-**Example 3:**
-Input: `nums = [3, 4, 2, 3]`
-Output: `false`
-Explanation: Cuma ada 1 pelanggaran (`4>2`), tapi tetep gak bisa dibenerin
-ubah 1 elemen doang.
-
-**Example 4 (edge case):**
-Input: `nums = [5]`
-Output: `true`
-Explanation: Array 1 elemen otomatis non-decreasing (gak ada pasangan
-buat dibandingin).
-
-**Catatan Implementasi:**
-Manual, gak pake function built-in (gak ada `.sorted()`). Boleh bikin
-variable/function tambahan sendiri kalau perlu. Ini bukan Two Pointer dari
-2 ujung — ini single pass (jalan 1x dari depan ke belakang).
-
-**Strategi (terpisah dari definisi di atas):** pas ketemu 1 pelanggaran
-(`nums[i] > nums[i+1]`), mikirin cara benerinnya butuh liat elemen sebelum
-(`nums[i-1]`) DAN sesudah (`nums[i+2]`) — bukan cuma salah satu — biar
-perbaikan yang dipilih gak bikin pelanggaran baru di sisi lain. (Ini
-alasan kenapa Example 3 tetep `false` walau cuma 1 pelanggaran.)
-
-Starter code:
-```kotlin
-fun checkPossibility(nums: IntArray): Boolean {
-    // TODO
-}
-```
-
----
-
 ## Sesi 1 — Kickoff: Reverse String & Reverse Integer
 
 **Konteks:** Persiapan test kerja basic (1 minggu), format compiler online.
@@ -297,6 +225,58 @@ harus nyoba 2 kemungkinan dulu (skip kiri / skip kanan) sebelum mutusin.
   rule permanen baru di `CLAUDE.md` (format soal, catatan implementasi,
   istilah ambigu, boleh bikin function tambahan) biar sesi berikutnya
   lebih jelas dari awal
+
+---
+
+## Sesi 8 — LeetCode #665 Non-decreasing Array (Single Pass, bukan Two Pointer)
+
+**Konteks:** Lanjutan soal yang digantung dari sesi sebelumnya. Teknik baru:
+single pass 1 arah, keputusan fix di titik pelanggaran butuh liat elemen
+sebelum DAN sesudah — beda total dari semua variasi Two Pointer yang udah
+dilatih di Sesi 3-7.
+
+**Yang dipelajari:**
+- Single pass array check: loop 1x dari depan, bandingin `nums[i]` ke
+  `nums[i+1]` doang (bukan ke semua elemen di belakang kayak percobaan
+  awal yang pakai nested loop)
+- Keputusan "bisa dibenerin atau enggak" pas ketemu pelanggaran butuh 2
+  opsi: `canLowerLeft` (turunin elemen kiri, cek `nums[i-1]`) atau
+  `canRaiseRight` (naikin elemen kanan, cek `nums[i+2]`) — kalau dua-duanya
+  gak aman, `return false` langsung
+
+**Insight penting:**
+- **"Punya pelanggaran" (definisi non-decreasing, dicek APA ADANYA) beda
+  sama "gak bisa dibenerin" (jawaban `checkPossibility`)** — dua hal yang
+  gampang ketuker. Definisi non-decreasing itu statis, gak melibatkan izin
+  edit sama sekali; `checkPossibility` baru nanya "kalau boleh edit 1x,
+  bisa dibenerin gak"
+- **Jumlah pelanggaran doang gak cukup buat mutusin fixable/enggak** — itu
+  tergantung NILAI di sekitar titik pelanggaran. Contoh: `[3,4,2,3]` cuma
+  punya 1 pelanggaran (`4>2`) tapi tetep `false`, karena baik turunin `4`
+  maupun naikin `2` sama-sama bikin pelanggaran baru di sisi lain
+  (`nums[0]=3 > 2` kalau turunin, `4 > nums[3]=3` kalau naikin)
+- `i+2` di `canRaiseRight` bukan angka ajaib — itu `(i+1)+1`, index tepat
+  setelah elemen kanan pelanggaran (`nums[i+1]`). Sama pola-nya kayak
+  `i-1` di `canLowerLeft` (index tepat sebelum `nums[i]`)
+
+**Kegagalan & pelajaran:**
+- Percobaan pertama pakai nested loop (`j` dari `i+1` sampai akhir,
+  bandingin `nums[i]` ke SEMUA `nums[j]`) — beda dari definisi
+  non-decreasing yang disepakati (cuma bandingin ke elemen TEPAT
+  setelahnya). Selain gak sesuai definisi, pendekatan ini juga salah itung
+  jumlah "fouls" (1 elemen buruk bisa nyumbang banyak pelanggaran palsu ke
+  banyak `j` sekaligus)
+- Percobaan kedua ngitung `fouls` doang dari pasangan adjacent, `return
+  false` kalau `fouls == 2` — gagal di `[3,4,2,3]` (cuma 1 fouls tapi
+  harusnya `false`), karena gak ngecek APAKAH pelanggaran itu beneran bisa
+  dibenerin, cuma ngitung ada berapa
+- Sempat ke-trigger `ArrayIndexOutOfBoundsException` karena loop bound
+  `for(i in 0 until nums.size)` masih ngakses `nums[i+1]` sampai index
+  terakhir — dibenerin jadi `0 until nums.size - 1`
+- `kotlinc` bawaan Android Studio di device ini butuh classpath eksplisit
+  ke `kotlin-stdlib.jar` (auto-detect kepental, error `unresolved
+  reference 'println'` dkk padahal bukan bug kode) — solusinya tambahin
+  `-cp <path>/kotlinc/lib/kotlin-stdlib.jar` pas compile
 
 ---
 
