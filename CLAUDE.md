@@ -209,17 +209,46 @@ Stack → Binary Search → Linked List → Trees → ... → Graphs → DP.
 ## Spaced Repetition — "Flashback Check" (mekanisme konkret)
 
 Prinsip "spaced repetition" di bagian "Prinsip Belajar" (bawah) itu
-sekarang punya bentuk KONKRET, bukan cuma "sesekali balik lagi":
+sekarang punya bentuk KONKRET, berbasis interval (bukan cuma "sesekali
+balik lagi"):
 
-- Tiap kelar 1 STAGE BARU (bukan 1 soal — 1 stage penuh, ~3-5
-  soal/variasi), SEBELUM mulai stage berikutnya, kerjain ULANG 1 soal
-  dari stage SEBELUMNYA — dari NOL, TANPA liat kode lama
+- Begitu 1 pattern/stage selesai (~3-5 soal), jadwalin **Flashback Check
+  pertama di H+5** (5 hari kalender setelah stage itu dianggap kelar,
+  BUKAN 5 sesi) — kerjain ULANG 1 soal dari pattern itu dari NOL, TANPA
+  liat kode lama
+- **Recall BERSIH** (selesai lancar, paham KENAPA-nya, gak buka
+  catatan) -> jadwal berikutnya MUNDUR ke **H+14**
+- **Recall STUMBLE** (perlu buka catatan, atau logic-nya keliru) ->
+  jadwal berikutnya MAJU ke **H+3**
+- Setelah **3x recall bersih berturut-turut** -> pattern dianggap
+  "internalized", gak perlu dijadwalin flashback lagi (kecuali mau
+  iseng ngetes)
 - Soal buat flashback boleh soal yang SAMA (ngetes apa masih inget) atau
   soal BEDA dari pattern yang sama (ngetes transfer pemahaman, bukan
   hafalan kode persis)
-- Dicatet di `progress-log.md` pakai label **"Flashback Check"** di
-  bagian awal entry sesi, sebelum lanjut ke soal baru di stage
-  berikutnya
+- Dicatet di `progress-log.md` pakai label **"Flashback Check"**,
+  termasuk tanggal jadwal berikutnya (H+3/H+14) biar gampang di-track
+
+## Aturan Folder — Data-type vs Pattern (biar konsisten ke depan)
+
+Folder yang dibuat SEBELUM revisi roadmap 2026-07-17
+(`string-manipulation/`, `number-manipulation/`, `character-classification/`,
+`array-manipulation/`, `pattern-printing/`) dikelompokin berdasarkan TIPE
+DATA — ini TETAP DIPERTAHANKAN apa adanya, gak di-migrasi ulang (biaya
+migrasi lebih besar dari manfaatnya buat soal yang udah selesai).
+
+**Folder BARU dari stage Hashing dst dikelompokin berdasarkan PATTERN/
+TEKNIK** (`hashing-map/`, `sliding-window/`, `stack-queue/`,
+`binary-search/`, dst) — ini match sama cara Blind75/NeetCode150
+terstruktur, dan lebih relevan buat soal-soal tingkat lanjut yang teknik
+penyelesaiannya lebih penting daripada tipe data yang dipakai (misal
+soal Sliding Window bisa aja tipe datanya array ATAUPUN string, tapi
+tekniknya yang mau dilatih, bukan tipe datanya).
+
+**Aturan simpel buat soal baru ke depan:** kalau soal itu bagian dari
+salah satu STAGE di checklist (`Urutan Pattern` di atas), taruh di folder
+pattern-nya. Kalau di luar checklist (eksplorasi bebas kayak
+`pattern-printing/`), boleh bikin folder tema baru sesuai kebutuhan.
 
 ## Prinsip Belajar yang Dipegang (berbasis riset Deliberate Practice - Anders Ericsson)
 
