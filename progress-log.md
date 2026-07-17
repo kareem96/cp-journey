@@ -280,6 +280,63 @@ dilatih di Sesi 3-7.
 
 ---
 
+## Sesi 9 — Bedah `for` Loop (Review Sesi 8) + Number Pyramid (Mandiri)
+
+**Konteks:** Bukan soal baru — review mendalam ke solusi `checkPossibility`
+(Sesi 8) buat ngerti detail mekanisme `for` loop-nya, dilanjut eksplorasi
+mandiri bikin pola piramid angka pakai nested loop.
+
+**Yang dipelajari:**
+- Bedah kenapa `for (i in 0 until nums.size - 1)` pakai `-1`, sampai ke
+  akar konsepnya (bukan cuma hafalan)
+- `nums.withIndex()` dan `for (i in nums)` sebagai bentuk loop OTOMATIS
+  (lawan dari manual `for (i in 0 until nums.size)`)
+- Nested loop buat cetak pola (piramid angka) — eksplorasi mandiri, bukan
+  dari LeetCode/HackerRank
+
+**Insight penting:**
+- **`i` di dalam `for` itu CUMA angka biasa — "index" bukan konsep bawaan
+  Kotlin, itu cuma PERAN yang KITA kasih kalau angka itu dipake buat
+  akses `nums[i]`.** Loop `0..nums.size` gak tau dan gak peduli soal
+  array — dia cuma generator angka. Angka itu BARU "jadi index" (dan bisa
+  ketauan valid/enggak) pas dipake di `nums[...]`
+- **`until N` (exclusive) vs `..N` (inclusive) itu SELALU beda 1 di titik
+  berhenti.** `until N` berhenti di `N-1`, `..N` berhenti TEPAT di `N`.
+  Konsekuensinya: `until nums.size - 1` == `..nums.size - 2`, BUKAN
+  `..nums.size - 1` (itu kelebihan 1)
+- `nums[i]` polos (gak ada `+1`/`+2`) itu AMAN pakai `until nums.size`
+  tanpa perlu `-1` sama sekali — `-1` cuma dibutuhin kalau di dalam loop
+  ada akses index dengan OFFSET (`nums[i+1]`, dst). Prinsip umum: akses
+  `nums[i+N]` di dalam loop -> batas atas loop harus `nums.size - N`
+- `for (i in nums)` -> `i` = NILAI elemen langsung (bukan posisi). Beda
+  sama `for (i in 0 until nums.size)` yang `i`-nya POSISI. Ngebungkus
+  `nums[i]` di skenario `for (i in nums)` itu keliru — nilai dipaksa jadi
+  index, gampang out of bounds (kejadian nyata: `nums[8]` dari nilai
+  elemen ke-2 yang kebetulan `8`)
+- `nums.withIndex()` = versi OTOMATIS dari "loop pakai index + ambil
+  value manual" — bisa didestructure `(index, value)` atau dibiarin 1
+  objek (`IndexedValue`). Tapi gak ngasih akses ke TETANGGA (`i-1`,
+  `i+1`), jadi gak cukup buat soal yang butuh ngintip elemen sekitar
+  (kayak Non-decreasing Array)
+- **Piramid angka**: padding (spasi kosong) BERKURANG tiap baris
+  sementara konten (angka) BERTAMBAH tiap baris — dua arah yang
+  berlawanan ini yang bikin bentuk diagonal/piramid. Teknik debug: pakai
+  karakter KELIATAN (`*`) buat gantiin spasi kosong sementara, verifikasi
+  jumlah padding-nya visual dulu sebelum diganti spasi beneran
+
+**Kegagalan & pelajaran:**
+- Beberapa kali sengaja mancing `ArrayIndexOutOfBoundsException` buat
+  ngetes batas (`0..nums.size` tanpa penyesuaian, `nums[value]` dari
+  `for (i in nums)`, `nums[value]` dari `withIndex()`) — ini eksperimen
+  yang disengaja buat bangun intuisi, bukan bug beneran, tapi kegagalan
+  ini paling efektif ngebentuk pemahaman dibanding dijelasin doang
+- Sempat ambigu antara "loop range valid" (`i` boleh berapa aja sesuai
+  definisi range) sama "index array valid" (`nums[i]` cuma boleh
+  `0..size-1`) — dikira itu 1 aturan yang sama, padahal 2 aturan
+  independen yang KEBETULAN sering nyambung
+
+---
+
 <!-- Template buat entry baru:
 
 ## Sesi N — [Judul singkat]
