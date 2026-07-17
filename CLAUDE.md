@@ -166,22 +166,60 @@ STEP 4: CEK KELULUSAN
 
 ### Urutan Pattern (checklist progress, update status di sini)
 
+**Urutan referensi (direvisi 2026-07-17):** Blind 75 / NeetCode 150 —
+kurikulum interview-prep established, disusun Yangshun Tay (Blind 75) &
+NeetCode. Urutan checklist SEBELUMNYA taruh Map/HashMap & Sliding Window
+kejauhan mundur (setelah Stack) — udah dicek ulang dan direvisi biar
+match sama urutan yang emang kebukti efektif (tiap topik dibangun dari
+topik sebelumnya): Arrays & Hashing → Two Pointers → Sliding Window →
+Stack → Binary Search → Linked List → Trees → ... → Graphs → DP.
+
 **✅ SUDAH DIKUASAI:**
 - [x] Loop dasar (while, for) — beda kondisi berhenti, update manual vs otomatis
 - [x] String manipulation manual (reverse, klasifikasi karakter, vokal)
 - [x] Number manipulation manual (reverse integer + overflow handling, sum of digits)
-- [x] Two Pointer (reverse letters only — swap langsung, bukan geser bertahap)
+- [x] Two Pointer (5 variasi: swap, compare, count, branching — Sesi 3-7)
 
-**🔜 BERIKUTNYA (urutan bertahap, sesuaikan realita saat dikerjakan):**
-- [ ] Collections dasar: `List`, `MutableList` (kapan pakai `val` vs `var` list)
-- [ ] Map/HashMap (fondasi buat frequency counting — misal soal Two Sum versi asli)
-- [ ] `Pair` & `Triple` (return banyak nilai sekaligus)
-- [ ] Recursion (base case vs recursive case, sudah disinggung dikit — perlu diperdalam)
-- [ ] Sorting & custom comparator
-- [ ] Stack/Queue (pakai `ArrayDeque` di Kotlin)
-- [ ] Sliding Window & Prefix Sum
-- [ ] Binary Search
-- [ ] (Lanjut sesuai kebutuhan: Tree, Graph, DP — kalau fondasi di atas sudah representatif)
+**🟡 BELUM LENGKAP (masih di bawah target ~5x variasi, boleh diselipin di antara stage lain):**
+- [ ] Single-pass array + neighbor-check (baru 1x, Sesi 8 — LeetCode #665)
+
+**🔜 BERIKUTNYA (urutan Blind75/NeetCode150, folder per stage):**
+- [ ] **Hashing/Frequency Counting** (folder `hashing-map/`) — kenalan
+      `Map`/`HashMap` dulu (+ `List`/`MutableList` secukupnya kalau ada
+      gap; kemungkinan besar udah familiar dari kerjaan sehari-hari,
+      gak perlu drilling penuh dari nol). Soal: Contains Duplicate
+      (#217), Valid Anagram (#242), Ransom Note (#383), Two Sum versi
+      HashMap (#1, `O(n)` — bandingin ke pendekatan awal yang mungkin
+      `O(n^2)`)
+- [ ] **Sliding Window** (folder `sliding-window/`) — lanjutan LANGSUNG
+      dari Two Pointer, teknik "jendela bergerak". Soal: Best Time to
+      Buy and Sell Stock (#121), Contains Duplicate II (#219)
+- [ ] **Stack** (folder `stack-queue/`) — Soal: Valid Parentheses (#20)
+- [ ] **Binary Search** (folder `binary-search/`) — Soal: Binary Search
+      (#704), First Bad Version (#278) — Search Insert Position (#35)
+      udah pernah diselesaiin di LeetCode
+- [ ] Linked List (custom `Node` class — Kotlin gak ada built-in linked
+      list kayak Python)
+- [ ] Recursion (base case vs recursive case) & Backtracking dasar
+- [ ] Trees (BFS/DFS) — butuh fondasi Recursion dulu
+- [ ] Sorting & custom comparator, `Pair`/`Triple`
+- [ ] (Lanjut sesuai kebutuhan: Heap, Graphs, DP, Greedy, Intervals —
+      fase lanjutan setelah fondasi di atas representatif)
+
+## Spaced Repetition — "Flashback Check" (mekanisme konkret)
+
+Prinsip "spaced repetition" di bagian "Prinsip Belajar" (bawah) itu
+sekarang punya bentuk KONKRET, bukan cuma "sesekali balik lagi":
+
+- Tiap kelar 1 STAGE BARU (bukan 1 soal — 1 stage penuh, ~3-5
+  soal/variasi), SEBELUM mulai stage berikutnya, kerjain ULANG 1 soal
+  dari stage SEBELUMNYA — dari NOL, TANPA liat kode lama
+- Soal buat flashback boleh soal yang SAMA (ngetes apa masih inget) atau
+  soal BEDA dari pattern yang sama (ngetes transfer pemahaman, bukan
+  hafalan kode persis)
+- Dicatet di `progress-log.md` pakai label **"Flashback Check"** di
+  bagian awal entry sesi, sebelum lanjut ke soal baru di stage
+  berikutnya
 
 ## Prinsip Belajar yang Dipegang (berbasis riset Deliberate Practice - Anders Ericsson)
 

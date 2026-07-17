@@ -15,6 +15,10 @@ number-manipulation/      <- reverse integer, sum of digits
 character-classification/ <- klasifikasi karakter, special character handling
 array-manipulation/       <- single-pass array check, modifikasi in-place
 pattern-printing/         <- nested loop, pola indentasi/spacing (piramid dst)
+hashing-map/              <- (rencana) Map/HashMap, frequency counting
+sliding-window/           <- (rencana) sliding window, lanjutan Two Pointer
+stack-queue/              <- (rencana) Stack (Valid Parentheses dst)
+binary-search/            <- (rencana) Binary Search
 ```
 
 ## Cara pakai
